@@ -24,6 +24,19 @@ Install with [CocoaPods](http://cocoapods.org):
    or with a motion mananger :
 
     ` HAWTiltedImageView *view = [[HAWTiltedImageView alloc] initWithMotionManager:self.motionManager];`
+    
+## Examples
+
+There is an example included with the project. To install, 
+
+```
+	$ pod install
+ 	$ open TiledImageViewExample.xcworkspace/
+```
+
+##Authors
+
+James Paolantonio - [@jpaolantonio](http://twitter.com/jPaolantonio)
 
 ####Extra 
 
