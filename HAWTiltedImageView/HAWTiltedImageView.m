@@ -16,9 +16,12 @@
 
 @implementation HAWTiltedImageView
 
-- (id)initWithMotionManager:(CMMotionManager *)manager
-{
-    self =  [super init];
+- (id)init {
+    return [self initWithMotionManager:nil];
+}
+
+- (id)initWithMotionManager:(CMMotionManager *)manager {
+    self = [super init];
     if (!self)
         return self;
     
