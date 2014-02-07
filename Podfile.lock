@@ -1,0 +1,14 @@
+PODS:
+  - NSLayoutConstraint+HAWHelpers (0.6)
+
+DEPENDENCIES:
+  - NSLayoutConstraint+HAWHelpers (from `https://github.com/howaboutwe/NSLayoutConstraint-HAWHelpers.git`)
+
+EXTERNAL SOURCES:
+  NSLayoutConstraint+HAWHelpers:
+    :git: https://github.com/howaboutwe/NSLayoutConstraint-HAWHelpers.git
+
+SPEC CHECKSUMS:
+  NSLayoutConstraint+HAWHelpers: f89643533da02013569d860d555c7ca67e97aefc
+
+COCOAPODS: 0.29.0
