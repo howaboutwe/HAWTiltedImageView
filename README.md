@@ -30,8 +30,8 @@ Install with [CocoaPods](http://cocoapods.org):
 There is an example included with the project. To install, 
 
 ```
-	$ pod install
- 	$ open TiledImageViewExample.xcworkspace/
+$ pod install
+$ open TiledImageViewExample.xcworkspace/
 ```
 
 ##Contribute
