@@ -16,7 +16,7 @@
 
 @implementation HAWTiltedImageView
 
-- (id)init
+- (id)initWithMotionManager:(CMMotionManager *)manager
 {
     self =  [super init];
     if (!self)
@@ -28,7 +28,7 @@
         UIScrollView *scrollView = [[UIScrollView alloc] init];
         scrollView.translatesAutoresizingMaskIntoConstraints = NO;
         scrollView.bounces = NO;
-        scrollView.userInteractionEnabled = YES;//Make NO
+        scrollView.userInteractionEnabled = NO;
         [self addSubview:scrollView];
         [NSLayoutConstraint extentOfChild:scrollView toExtentOfParent:self];
         
@@ -42,16 +42,64 @@
         imageView;
     });
     
+    _motionManager = manager;
+    if (_motionManager == nil) {
+        _motionManager = ({
+            CMMotionManager *manager = [[CMMotionManager alloc] init];
+            [manager setGyroUpdateInterval:1.0/60.0];
+            
+            manager;
+        });
+    }
+    
     return self;
+}
+
+- (void)dealloc {
+    [_motionManager stopGyroUpdates];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     [self.imageView sizeToFit];
+    CGRect r = self.imageView.frame;
     
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.imageView.bounds), CGRectGetHeight(self.imageView.bounds));
+    CGFloat aspectRatio = CGRectGetHeight(r) / CGRectGetWidth(r);
+    
+    r.size.height = CGRectGetHeight(self.scrollView.bounds);
+    r.size.width = r.size.height / aspectRatio;
+    
+    self.imageView.frame = r;
+    
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(r), CGRectGetHeight(r));
+    [self startGyroUpdates];
 }
+
+- (void)startGyroUpdates {
+    CGFloat motionMovingRate = 4;
+    
+    int maxXOffset = self.scrollView.contentSize.width - self.scrollView.frame.size.width;
+    int minXOffset = 0;
+    
+    self.scrollView.contentOffset = CGPointMake((self.scrollView.contentSize.width - self.frame.size.width) / 2, 0);
+    
+    [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
+                               withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                   if (fabs(gyroData.rotationRate.y) < 0.1)
+                                       return;
+                                   
+                                   CGFloat targetX = self.scrollView.contentOffset.x - gyroData.rotationRate.y * motionMovingRate;
+                                   if (targetX > maxXOffset)
+                                       targetX = maxXOffset;
+                                   else if (targetX < minXOffset)
+                                       targetX = minXOffset;
+                                   
+                                   self.scrollView.contentOffset = CGPointMake(targetX, 0);
+                               }];
+}
+
+#pragma mark - Setters
 
 - (void)setImage:(UIImage *)image {
     _image = image;
@@ -59,17 +107,10 @@
     self.imageView.image = image;
 }
 
-- (CMMotionManager *)motionManager {
-    if (_motionManager)
-        return _motionManager;
+- (void)setMotionManager:(CMMotionManager *)motionManager {
+    _motionManager = motionManager;
     
-    _motionManager = ({
-        CMMotionManager *manager = [[CMMotionManager alloc] init];
-        
-        manager;
-    });
-    
-    return _motionManager;
+    [self startGyroUpdates];
 }
 
 @end

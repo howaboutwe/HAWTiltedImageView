@@ -10,6 +10,10 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface HAWTiltedImageView : UIView
+
+- (id)initWithMotionManager:(CMMotionManager *)manager;
+
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+
 @end
