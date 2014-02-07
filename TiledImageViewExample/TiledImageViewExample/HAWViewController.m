@@ -26,9 +26,13 @@
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.imageView];
     
-    self.imageView.image = [UIImage imageNamed:@"NJ"];
-    
     [NSLayoutConstraint extentOfChild:self.imageView toExtentOfParent:self.view];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    self.imageView.image = [UIImage imageNamed:@"NJ"];
 }
 
 @end

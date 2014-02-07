@@ -21,6 +21,7 @@
 		1ACEFB7918A566F200736D42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1ACEFB7718A566F200736D42 /* InfoPlist.strings */; };
 		1ACEFB7B18A566F200736D42 /* TiledImageViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEFB7A18A566F200736D42 /* TiledImageViewExampleTests.m */; };
 		1ACEFB8718A567F000736D42 /* HAWTiltedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACEFB8618A567F000736D42 /* HAWTiltedImageView.m */; };
+		1ACEFB8918A5739100736D42 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACEFB8818A5739100736D42 /* CoreMotion.framework */; };
 		AAFD273DC54E45C88337B823 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F054809E404C4C168407B316 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		1ACEFB7A18A566F200736D42 /* TiledImageViewExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TiledImageViewExampleTests.m; sourceTree = "<group>"; };
 		1ACEFB8518A567F000736D42 /* HAWTiltedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAWTiltedImageView.h; path = ../../HAWTiltedImageView/HAWTiltedImageView.h; sourceTree = "<group>"; };
 		1ACEFB8618A567F000736D42 /* HAWTiltedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAWTiltedImageView.m; path = ../../HAWTiltedImageView/HAWTiltedImageView.m; sourceTree = "<group>"; };
+		1ACEFB8818A5739100736D42 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		E8E7F2B60F1C47A690B26CA6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F054809E404C4C168407B316 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ACEFB8918A5739100736D42 /* CoreMotion.framework in Frameworks */,
 				1ACEFB4F18A566F200736D42 /* CoreGraphics.framework in Frameworks */,
 				1ACEFB5118A566F200736D42 /* UIKit.framework in Frameworks */,
 				1ACEFB4D18A566F200736D42 /* Foundation.framework in Frameworks */,
@@ -108,11 +111,12 @@
 		1ACEFB4B18A566F200736D42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1ACEFB4C18A566F200736D42 /* Foundation.framework */,
 				1ACEFB4E18A566F200736D42 /* CoreGraphics.framework */,
+				1ACEFB8818A5739100736D42 /* CoreMotion.framework */,
+				1ACEFB4C18A566F200736D42 /* Foundation.framework */,
+				F054809E404C4C168407B316 /* libPods.a */,
 				1ACEFB5018A566F200736D42 /* UIKit.framework */,
 				1ACEFB6E18A566F200736D42 /* XCTest.framework */,
-				F054809E404C4C168407B316 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,6 +223,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "How About We";
 				TargetAttributes = {
+					1ACEFB4818A566F200736D42 = {
+						DevelopmentTeam = MS535M936G;
+					};
 					1ACEFB6C18A566F200736D42 = {
 						TestTargetID = 1ACEFB4818A566F200736D42;
 					};
@@ -426,7 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Paolantonio (25S2R83EPA)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TiledImageViewExample/TiledImageViewExample-Prefix.pch";
 				INFOPLIST_FILE = "TiledImageViewExample/TiledImageViewExample-Info.plist";
@@ -442,7 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Paolantonio (25S2R83EPA)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TiledImageViewExample/TiledImageViewExample-Prefix.pch";
 				INFOPLIST_FILE = "TiledImageViewExample/TiledImageViewExample-Info.plist";

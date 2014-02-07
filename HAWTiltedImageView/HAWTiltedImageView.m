@@ -8,10 +8,12 @@
 
 #import "HAWTiltedImageView.h"
 #import <NSLayoutConstraint+HAWHelpers/NSLayoutConstraint+HAWHelpers.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface HAWTiltedImageView ()
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) CMMotionManager *motionManager;
 @end
 
 @implementation HAWTiltedImageView
@@ -25,26 +27,36 @@
         _scrollView = ({
             UIScrollView *scrollView = [[UIScrollView alloc] init];
             scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+            scrollView.bounces = NO;
+            scrollView.userInteractionEnabled = YES;//Make NO
             [self addSubview:scrollView];
             [NSLayoutConstraint extentOfChild:scrollView toExtentOfParent:self];
+            
             scrollView;
         });
         
         _imageView = ({
             UIImageView *imageView = [[UIImageView alloc] init];
             
-            [self addSubview:imageView];
+            [self.scrollView addSubview:imageView];
             imageView;
         });
     }
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self.imageView sizeToFit];
+    
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.imageView.bounds), CGRectGetHeight(self.imageView.bounds));
+}
+
 - (void)setImage:(UIImage *)image {
     _image = image;
     
     self.imageView.image = image;
-    [self.imageView sizeToFit];
 }
 
 @end
