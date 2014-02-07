@@ -7,7 +7,7 @@ A view that uses motion to show all of an image.
 
 Install with [CocoaPods](http://cocoapods.org):
 
-	`pod 'HAWTiltedImageView'`
+	pod 'HAWTiltedImageView'
 
 ## Usage
 
