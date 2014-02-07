@@ -7,7 +7,7 @@ A view that uses motion to show all of an image.
 
 Install with [CocoaPods](http://cocoapods.org):
 
-`pod 'HAWTiltedImageView'`
+	`pod 'HAWTiltedImageView'`
 
 ## Usage
 
@@ -33,6 +33,10 @@ There is an example included with the project. To install,
 	$ pod install
  	$ open TiledImageViewExample.xcworkspace/
 ```
+
+##Contribute
+
+Send me pull requests !!
 
 ##Authors
 
