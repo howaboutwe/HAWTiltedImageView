@@ -108,6 +108,9 @@
 }
 
 - (void)setMotionManager:(CMMotionManager *)motionManager {
+    if (_motionManager)
+        [_motionManager stopGyroUpdates];
+    
     _motionManager = motionManager;
     
     [self startGyroUpdates];
