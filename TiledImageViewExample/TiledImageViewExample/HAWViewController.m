@@ -22,7 +22,7 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     
-    self.imageView = [[HAWTiltedImageView alloc] init];
+    self.imageView = [[HAWTiltedImageView alloc] initWithMotionManager:<#(CMMotionManager *)#>];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.imageView];
     

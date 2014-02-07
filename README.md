@@ -11,20 +11,20 @@ Install with [CocoaPods](http://cocoapods.org):
 
 ## Usage
 
-### Creating an ALPValidator
+### Creating an HAWTiltedImageView
 
 1. Import:
 
-    `#import "ALPValidator.h"`
+    `#import "HAWTiltedImageView.h"`
 
-2. Create a string validator instance using the designated initialiser:
+2. Create a view without a motion mananger 
 
-    `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeString];`
+    `HAWTiltedImageView *view = [[HAWTiltedImageView alloc] init];`
 
 or a numeric validator:
 
-    `ALPValidator *validator = [ALPValidator validatorWithType:ALPValidatorTypeNumeric];`
+    ` HAWTiltedImageView *view = [[HAWTiltedImageView alloc] initWithMotionManager:self.motionManager];`
 
-###Extra 
+####Extra 
 
 This was built while standing up.
