@@ -21,7 +21,7 @@ Install with [CocoaPods](http://cocoapods.org):
 
     `HAWTiltedImageView *view = [[HAWTiltedImageView alloc] init];`
 
-or a numeric validator:
+   or with a motion mananger :
 
     ` HAWTiltedImageView *view = [[HAWTiltedImageView alloc] initWithMotionManager:self.motionManager];`
 
