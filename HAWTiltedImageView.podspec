@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "HAWTiltedImageView"
-  s.version      = "0.8"
+  s.version      = "0.8.1"
   s.summary      = "A view in iOS that uses gyro updates to show all of an image."
 
   s.description  = <<-DESC
