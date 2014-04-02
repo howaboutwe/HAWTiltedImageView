@@ -87,19 +87,20 @@
     
     self.scrollView.contentOffset = CGPointMake((self.scrollView.contentSize.width - self.frame.size.width) / 2, 0);
     
+    __weak typeof(self) weakSelf = self;
     [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
-                               withHandler:^(CMGyroData *gyroData, NSError *error) {
-                                   if (fabs(gyroData.rotationRate.y) < 0.1)
-                                       return;
-                                   
-                                   CGFloat targetX = self.scrollView.contentOffset.x - gyroData.rotationRate.y * motionMovingRate;
-                                   if (targetX > maxXOffset)
-                                       targetX = maxXOffset;
-                                   else if (targetX < minXOffset)
-                                       targetX = minXOffset;
-                                   
-                                   self.scrollView.contentOffset = CGPointMake(targetX, 0);
-                               }];
+                                    withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                        if (fabs(gyroData.rotationRate.y) < 0.1)
+                                            return;
+                                        
+                                        CGFloat targetX = weakSelf.scrollView.contentOffset.x - gyroData.rotationRate.y * motionMovingRate;
+                                        if (targetX > maxXOffset)
+                                            targetX = maxXOffset;
+                                        else if (targetX < minXOffset)
+                                            targetX = minXOffset;
+                                        
+                                        weakSelf.scrollView.contentOffset = CGPointMake(targetX, 0);
+                                    }];
 }
 
 #pragma mark - Setters
