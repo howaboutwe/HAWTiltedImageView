@@ -25,7 +25,7 @@
     if (!self)
         return self;
     
-    self.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.25];
+    self.backgroundColor = [UIColor blackColor];
     
     _scrollView = ({
         UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -68,7 +68,13 @@
     [self.imageView sizeToFit];
     CGRect r = self.imageView.frame;
     
-    CGFloat aspectRatio = CGRectGetHeight(r) / CGRectGetWidth(r);
+    CGFloat height = CGRectGetHeight(r);
+    CGFloat width = CGRectGetWidth(r);
+    
+    if (height < 1 || width < 1)
+        return;
+    
+    CGFloat aspectRatio = height / width;
     
     r.size.height = CGRectGetHeight(self.scrollView.bounds);
     r.size.width = r.size.height / aspectRatio;
@@ -88,6 +94,7 @@
     self.scrollView.contentOffset = CGPointMake((self.scrollView.contentSize.width - self.frame.size.width) / 2, 0);
     
     __weak typeof(self) weakSelf = self;
+    [self.motionManager stopGyroUpdates];
     [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
                                     withHandler:^(CMGyroData *gyroData, NSError *error) {
                                         if (fabs(gyroData.rotationRate.y) < 0.1)
@@ -109,6 +116,7 @@
     _image = image;
     
     self.imageView.image = image;
+    [self setNeedsLayout];
 }
 
 - (void)setMotionManager:(CMMotionManager *)motionManager {
