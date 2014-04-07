@@ -40,7 +40,6 @@
     
     _imageView = ({
         UIImageView *imageView = [[UIImageView alloc] init];
-        
         [self.scrollView addSubview:imageView];
         imageView;
     });
@@ -50,7 +49,6 @@
         _motionManager = ({
             CMMotionManager *manager = [[CMMotionManager alloc] init];
             [manager setGyroUpdateInterval:1.0/60.0];
-            
             manager;
         });
     }
@@ -81,8 +79,15 @@
     
     self.imageView.frame = r;
     
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(r), CGRectGetHeight(r));
-    [self startGyroUpdates];
+    width = CGRectGetWidth(r);
+    self.scrollView.contentSize = CGSizeMake(width, CGRectGetHeight(r));
+    
+    if (width > CGRectGetWidth(self.scrollView.bounds)) {
+        [self startGyroUpdates];
+    } else {
+        r.origin.x = CGRectGetMidX(self.scrollView.bounds) - (width/2);
+        self.imageView.frame = r;
+    }
 }
 
 - (void)startGyroUpdates {
